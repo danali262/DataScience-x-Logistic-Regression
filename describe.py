@@ -62,11 +62,25 @@ while j < number_columns:
 	j += 1
 # print(count_list)
 
+# build mean list
+j = 0
+while j < number_columns:
+	i = 0
+	sum = 0
+	mean = 0
+	while i < number_of_rows:
+		cell_content = input_file.iloc[i, j]
+		if np.isnan(cell_content) == False:
+			sum = sum + cell_content
+			mean = (sum * 1.0) / float(count_list[j])
+		i += 1
+	mean_list.append(format(float(mean), '.6f'))
+	j += 1
+# print(mean_list)
 
+list_of_lists = [keys_list, features_list, count_list, mean_list]
+output_file = pd.DataFrame(list_of_lists)
+print(output_file)
 
-# list_of_lists = [keys_list, features_list, count_list]
-# output_file = pd.DataFrame(list_of_lists)
-# print(output_file)
-
-# print("describe gives us")
-# print(input_file.describe())
+print("describe gives us")
+print(input_file.describe())
