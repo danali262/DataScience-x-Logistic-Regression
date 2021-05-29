@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import sys
 import csv
+import math
 
 # input checking
 if len(sys.argv) != 2 :
@@ -47,7 +48,7 @@ while i < number_columns:
 	i += 1
 # print (features_list)
 
-# build count list
+# build count_list
 j = 0
 number_of_rows = len(input_file)
 while j < number_columns:
@@ -62,7 +63,7 @@ while j < number_columns:
 	j += 1
 # print(count_list)
 
-# build mean list
+# build mean_list
 j = 0
 while j < number_columns:
 	i = 0
@@ -78,7 +79,55 @@ while j < number_columns:
 	j += 1
 # print(mean_list)
 
-list_of_lists = [keys_list, features_list, count_list, mean_list]
+# build std_list
+j = 0
+while j < number_columns:
+	i = 0
+	sum_square_diff = 0
+	square_diff = 0
+	mean_square_diff = 0
+	std = 0
+	while i < number_of_rows:
+		cell_content = input_file.iloc[i, j]
+		if np.isnan(cell_content) == False:
+			square_diff = (cell_content - float(mean_list[j])) ** 2
+			sum_square_diff = sum_square_diff + square_diff
+			mean_square_diff = (sum_square_diff * 1.0) / float(count_list[j])
+			std = math.sqrt(mean_square_diff)
+		i += 1
+	std_list.append(format(float(std), '.6f'))
+	j += 1
+# print(std_list)
+
+# build min_list
+j = 0
+while j < number_columns:
+	i = 0
+	min = input_file.iloc[i, j]
+	while i < number_of_rows:
+		cell_content = input_file.iloc[i, j]
+		if cell_content < min:
+			min = cell_content
+		i += 1
+	min_list.append(format(float(min), '.6f'))
+	j += 1
+# print(min_list)
+
+# build max_list
+j = 0
+while j < number_columns:
+	i = 0
+	max = input_file.iloc[i, j]
+	while i < number_of_rows:
+		cell_content = input_file.iloc[i, j]
+		if cell_content > max:
+			max = cell_content
+		i += 1
+	max_list.append(format(float(max), '.6f'))
+	j += 1
+# print(max_list)
+
+list_of_lists = [keys_list, features_list, count_list, mean_list, std_list, min_list, max_list]
 output_file = pd.DataFrame(list_of_lists)
 print(output_file)
 
