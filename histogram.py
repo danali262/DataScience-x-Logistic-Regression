@@ -40,15 +40,48 @@ while j < number_of_columns:
 	output = pd.DataFrame(list_of_lists)
 	keys_list = ["Ravenclaw", "Hufflepuff", "Gryffindor", "Slytherin"]
 	output.insert(0, " ", keys_list, True)
-	plt.hist(scores_R, bins=10, label="Ravenclaw")
-	plt.hist(scores_H, bins=10, label = "Hufflepuff")
-	plt.hist(scores_G, bins=10, label = "Gryffindor")
-	plt.hist(scores_S, bins=10, label = "Slytherin")
-	plt.xlabel("Values")
-	plt.ylabel("Frequency")
-	plt.title("%s Scores" % (subjects[k]))
-	plt.legend(loc='upper right')
-	plt.show()
+	# plt.hist(scores_R, bins=10, label="Ravenclaw")
+	# plt.hist(scores_H, bins=10, label = "Hufflepuff")
+	# plt.hist(scores_G, bins=10, label = "Gryffindor")
+	# plt.hist(scores_S, bins=10, label = "Slytherin")
+	# plt.xlabel("Values")
+	# plt.ylabel("Frequency")
+	# plt.title("%s Scores" % (subjects[k]))
+	# plt.legend(loc='upper right')
+	# plt.show()
 	j += 1
 	k += 1
 
+# show the requested histogram
+j = 16
+k = 0
+i = 0
+scores_R = []
+scores_H = []
+scores_G = []
+scores_S = []
+while i < number_of_rows:
+	cell_content = input_file.iloc[i, j]
+	if np.isnan(cell_content) == False:
+		if input_file.iloc[i, 1] == "Raveclaw":
+			scores_R.append(cell_content)
+		elif input_file.iloc[i, 1] == "Hufflepuff":
+			scores_H.append(cell_content)
+		elif input_file.iloc[i, 1] == "Gryffindor":
+			scores_G.append(cell_content)
+		elif input_file.iloc[i, 1] == "Slytherin":
+			scores_S.append(cell_content)
+	i += 1
+list_of_lists = [scores_R, scores_H, scores_G, scores_S]
+output = pd.DataFrame(list_of_lists)
+keys_list = ["Ravenclaw", "Hufflepuff", "Gryffindor", "Slytherin"]
+output.insert(0, " ", keys_list, True)
+plt.hist(scores_R, bins=10, label="Ravenclaw")
+plt.hist(scores_H, bins=10, label = "Hufflepuff")
+plt.hist(scores_G, bins=10, label = "Gryffindor")
+plt.hist(scores_S, bins=10, label = "Slytherin")
+plt.xlabel("Values")
+plt.ylabel("Frequency")
+plt.title("%s Scores" % (subjects[10]))
+plt.legend(loc='upper right')
+plt.show()
