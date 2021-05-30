@@ -186,5 +186,4 @@ list_of_lists = [features_list, count_list, mean_list, std_list, min_list, twent
 output_file = pd.DataFrame(list_of_lists)
 keys_list = [" ", "count", "mean", "std", "min", "25%", "50%", "75%", "max"]
 output_file.insert(0, " ", keys_list, True)
-# output_file.to_csv('describe.csv')
 print(output_file)
