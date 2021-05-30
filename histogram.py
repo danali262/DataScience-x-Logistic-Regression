@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import sys
 import matplotlib.pyplot as plt
+import cv2 as cv
 
 # input checking
 if len(sys.argv) != 2 :
@@ -13,8 +14,6 @@ input_file = pd.read_csv(sys.argv[1])
 number_of_rows = len(input_file)
 number_of_columns = len(input_file.columns)
 subjects = ["Arithmancy", "Astronomy", "Herbology", "Defense Against the Dark Arts", "Divination", "Muggle Studies", "Ancient Runes", "History of Magic", "Transfiguration", "Potions", "Care of Magical Creatures", "Charms", "Flying"]
-
-# hardcoded the columns of the subjects to save time - not optimal
 
 # loop all the separate histograms for each subject with the distributions per Hogwarts House
 j = 6
@@ -41,10 +40,10 @@ while j < number_of_columns:
 	output = pd.DataFrame(list_of_lists)
 	keys_list = ["Ravenclaw", "Hufflepuff", "Gryffindor", "Slytherin"]
 	output.insert(0, " ", keys_list, True)
-	plt.hist(scores_R, label="Ravenclaw")
-	plt.hist(scores_H, label = "Hufflepuff")
-	plt.hist(scores_G, label = "Gryffindor")
-	plt.hist(scores_S, label = "Slytherin")
+	plt.hist(scores_R, bins=10, label="Ravenclaw")
+	plt.hist(scores_H, bins=10, label = "Hufflepuff")
+	plt.hist(scores_G, bins=10, label = "Gryffindor")
+	plt.hist(scores_S, bins=10, label = "Slytherin")
 	plt.xlabel("Values")
 	plt.ylabel("Frequency")
 	plt.title("%s Scores" % (subjects[k]))
