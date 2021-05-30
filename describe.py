@@ -28,7 +28,7 @@ number_columns = len(input_file.columns)
 # print(input_file)
 
 # creating a panda dataframe from scratch using list of lists. Every row of the data frame is 
-# a list.
+# a list. The keys_list is the first column.
 keys_list = [" ", "Count", "Mean", "Std", "Min", "25%", "50%", "75%", "Max"]
 features_list = []
 count_list = []
@@ -46,7 +46,6 @@ while i < number_columns:
 	feature = input_file.columns[i]
 	features_list.append(feature)
 	i += 1
-# print (features_list)
 
 # build count_list
 j = 0
@@ -61,7 +60,6 @@ while j < number_columns:
 		i += 1
 	count_list.append(format(count, '.5f'))
 	j += 1
-# print(count_list)
 
 # build mean_list
 j = 0
@@ -77,7 +75,6 @@ while j < number_columns:
 		i += 1
 	mean_list.append(format(float(mean), '.6f'))
 	j += 1
-# print(mean_list)
 
 # build std_list
 j = 0
@@ -97,7 +94,6 @@ while j < number_columns:
 		i += 1
 	std_list.append(format(float(std), '.6f'))
 	j += 1
-# print(std_list)
 
 # build min_list
 j = 0
@@ -111,7 +107,69 @@ while j < number_columns:
 		i += 1
 	min_list.append(format(float(min), '.6f'))
 	j += 1
-# print(min_list)
+
+# build twentyfiveper_list
+j = 0
+while j < number_columns:
+	i = 0
+	values = []
+	per = 0.25
+	index = 0
+	while i < number_of_rows:
+		cell_content = input_file.iloc[i, j]
+		if np.isnan(cell_content) == False:
+			values.append(cell_content)
+		i += 1
+	values.sort()
+	index = per * float(count_list[j])
+	if index.is_integer():
+		twentyfiveper = values[int(index)]
+	else:
+		twentyfiveper = values[int(math.ceil(index)) - 1]
+	twentyfiveper_list.append(format(float(twentyfiveper), '.5f'))
+	j += 1
+
+# build fiftyper_list
+j = 0
+while j < number_columns:
+	i = 0
+	values = []
+	per = 0.50
+	index = 0
+	while i < number_of_rows:
+		cell_content = input_file.iloc[i, j]
+		if np.isnan(cell_content) == False:
+			values.append(cell_content)
+		i += 1
+	values.sort()
+	index = per * float(count_list[j])
+	if index.is_integer():
+		fiftyper = values[int(index)]
+	else:
+		fiftyper = values[int(math.ceil(index)) - 1]
+	fiftyper_list.append(format(float(fiftyper), '.5f'))
+	j += 1
+
+# build seventyfiveper_list
+j = 0
+while j < number_columns:
+	i = 0
+	values = []
+	per = 0.75
+	index = 0
+	while i < number_of_rows:
+		cell_content = input_file.iloc[i, j]
+		if np.isnan(cell_content) == False:
+			values.append(cell_content)
+		i += 1
+	values.sort()
+	index = per * float(count_list[j])
+	if index.is_integer():
+		seventyfiveper = values[int(index)]
+	else:
+		seventyfiveper = values[int(math.ceil(index)) - 1]
+	seventyfiveper_list.append(format(float(seventyfiveper), '.5f'))
+	j += 1 
 
 # build max_list
 j = 0
@@ -125,9 +183,8 @@ while j < number_columns:
 		i += 1
 	max_list.append(format(float(max), '.6f'))
 	j += 1
-# print(max_list)
 
-list_of_lists = [keys_list, features_list, count_list, mean_list, std_list, min_list, max_list]
+list_of_lists = [keys_list, features_list, count_list, mean_list, std_list, min_list, twentyfiveper_list, fiftyper_list, seventyfiveper_list, max_list]
 output_file = pd.DataFrame(list_of_lists)
 print(output_file)
 
