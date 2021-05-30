@@ -25,11 +25,9 @@ while i < number_columns:
 	i +=1
 input_file.drop(input_file.columns[columns_to_be_deleted], axis=1, inplace=True)
 number_columns = len(input_file.columns)
-# print(input_file)
 
 # creating a panda dataframe from scratch using list of lists. Every row of the data frame is 
 # a list. The keys_list is the first column.
-keys_list = [" ", "Count", "Mean", "Std", "Min", "25%", "50%", "75%", "Max"]
 features_list = []
 count_list = []
 mean_list = []
@@ -58,7 +56,7 @@ while j < number_columns:
 		if np.isnan(cell_content) == False:
 			count += 1
 		i += 1
-	count_list.append(format(count, '.5f'))
+	count_list.append(format(count, '.6f'))
 	j += 1
 
 # build mean_list
@@ -126,7 +124,7 @@ while j < number_columns:
 		twentyfiveper = values[int(index)]
 	else:
 		twentyfiveper = values[int(math.ceil(index)) - 1]
-	twentyfiveper_list.append(format(float(twentyfiveper), '.5f'))
+	twentyfiveper_list.append(format(float(twentyfiveper), '.6f'))
 	j += 1
 
 # build fiftyper_list
@@ -147,7 +145,7 @@ while j < number_columns:
 		fiftyper = values[int(index)]
 	else:
 		fiftyper = values[int(math.ceil(index)) - 1]
-	fiftyper_list.append(format(float(fiftyper), '.5f'))
+	fiftyper_list.append(format(float(fiftyper), '.6f'))
 	j += 1
 
 # build seventyfiveper_list
@@ -168,7 +166,7 @@ while j < number_columns:
 		seventyfiveper = values[int(index)]
 	else:
 		seventyfiveper = values[int(math.ceil(index)) - 1]
-	seventyfiveper_list.append(format(float(seventyfiveper), '.5f'))
+	seventyfiveper_list.append(format(float(seventyfiveper), '.6f'))
 	j += 1 
 
 # build max_list
@@ -184,9 +182,9 @@ while j < number_columns:
 	max_list.append(format(float(max), '.6f'))
 	j += 1
 
-list_of_lists = [keys_list, features_list, count_list, mean_list, std_list, min_list, twentyfiveper_list, fiftyper_list, seventyfiveper_list, max_list]
+list_of_lists = [features_list, count_list, mean_list, std_list, min_list, twentyfiveper_list, fiftyper_list, seventyfiveper_list, max_list]
 output_file = pd.DataFrame(list_of_lists)
+keys_list = [" ", "count", "mean", "std", "min", "25%", "50%", "75%", "max"]
+output_file.insert(0, " ", keys_list, True)
+# output_file.to_csv('describe.csv')
 print(output_file)
-
-print("describe gives us")
-print(input_file.describe())
