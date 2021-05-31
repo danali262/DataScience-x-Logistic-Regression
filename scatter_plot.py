@@ -32,43 +32,30 @@ charms_scores = []
 flying_scores = []
 while i < number_of_rows:
 	cell_content = input_file.iloc[i, 6]
-	# if np.isnan(cell_content) == False:
 	arithmancy_scores.append(cell_content)
 	cell_content = input_file.iloc[i, 7]
-	# if np.isnan(cell_content) == False:
 	astronomy_scores.append(cell_content)
 	cell_content = input_file.iloc[i, 8]
-	# if np.isnan(cell_content) == False:
 	herbology_scores.append(cell_content)
 	cell_content = input_file.iloc[i, 9]
-	# if np.isnan(cell_content) == False:
 	defense_scores.append(cell_content)
 	cell_content = input_file.iloc[i, 10]
-	# if np.isnan(cell_content) == False:
 	divination_scores.append(cell_content)
 	cell_content = input_file.iloc[i, 11]
-	# if np.isnan(cell_content) == False:
 	muggle_scores.append(cell_content)
 	cell_content = input_file.iloc[i, 12]
-	# if np.isnan(cell_content) == False:
 	runes_scores.append(cell_content)
 	cell_content = input_file.iloc[i, 13]
-	# if np.isnan(cell_content) == False:
 	history_scores.append(cell_content)
 	cell_content = input_file.iloc[i, 14]
-	# if np.isnan(cell_content) == False:
 	transfig_scores.append(cell_content)
 	cell_content = input_file.iloc[i, 15]
-	# if np.isnan(cell_content) == False:
 	potions_scores.append(cell_content)
 	cell_content = input_file.iloc[i, 16]
-	# if np.isnan(cell_content) == False:
 	care_scores.append(cell_content)
 	cell_content = input_file.iloc[i, 17]
-	# if np.isnan(cell_content) == False:
 	charms_scores.append(cell_content)
 	cell_content = input_file.iloc[i, 18]
-	# if np.isnan(cell_content) == False:
 	flying_scores.append(cell_content)
 	i += 1
 
