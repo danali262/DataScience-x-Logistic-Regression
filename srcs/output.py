@@ -1,6 +1,7 @@
 import pandas as pd
 import methods
 
+
 # Creates an empty dataframe with column names & row indices but no data
 def create_dataframe(df_input):
     features_list = list(df_input.columns.values)
@@ -13,16 +14,21 @@ def create_dataframe(df_input):
 
 
 def fill_values(df_output, df_input):
-    count_list = methods.fill_count(df_input)
-    df_output.loc["Count"] = count_list
+    count_list, min_list, max_list, mean_list = methods.create_lists(df_input)
 
-    df_output.loc["Mean"] = methods.fill_mean(df_input, count_list)
-    # df_output.loc["Std"] = methods.fill_std(df_input)
-    # df_output.loc["Min"] = methods.fill_min(df_input)
-    # df_output.loc["25%"] = methods.fill_first_quartile(df_input)
-    # df_output.loc["50%"] = methods.fill_second_quartile(df_input)
-    # df_output.loc["75%"] = methods.fill_third_quartile(df_input)
-    # df_output.loc["Max"] = methods.fill_max(df_input)
+    df_output.loc["Count"] = count_list
+    df_output.loc["Min"] = min_list
+    df_output.loc["Max"] = max_list
+    df_output.loc["Mean"] = mean_list
+
+    # Calculate std deviation
+    # df_output.loc["Std"] = methods.fill_std(df_input, mean_list)
+
+    # Calculate percentiles
+    # first_quartile_list, second_quartile_list, third_quartile_list = methods.fill_quartile(df_input, count_list)
+    # df_output.loc["25%"] = first_quartile_list
+    # df_output.loc["50%"] = second_quartile_list
+    # df_output.loc["75%"] = third_quartile_list
 
     return df_output
 
