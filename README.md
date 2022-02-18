@@ -1,8 +1,22 @@
-# Data Science x Logistic Regression [WIP]
+# Data Science x Logistic Regression
 
-Classifier reproducing the behaviour of Hogwards' Sorting Hat.
+The aim of that project is to create a classifier that reproduces the behaviour of Hogwards' Sorting Hat.
 
+There are three parts of the project:
 
-<h3>describe.py</h3>
+1. <strong>Data Analysis</strong>
+2. <strong>Data Visualization</strong>
+3. <strong>Logistic Regression</strong>
 
-The first part is a Python script to mimic the Pandas "describe" method.
+## Data Analysis
+
+In the <strong>Data Analysis</strong> part the aim is to produce a `describe.py` program, which mimics the behaviour of `pandas.DataFrame.describe` method.
+
+> Usage
+```python3
+describe.py [dataset_path]
+```
+
+> Example
+
+// add print screen of result
