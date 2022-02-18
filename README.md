@@ -3,6 +3,6 @@
 Classifier reproducing the behaviour of Hogwards' Sorting Hat.
 
 
-<h1>describe.py</h1>
+<h3>describe.py</h3>
 
 The first part is a Python script to mimic the Pandas "describe" method.
