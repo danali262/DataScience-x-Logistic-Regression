@@ -19,13 +19,15 @@ In the <strong>Data Analysis</strong> part the aim is to produce a `describe.py`
 The use of `describe`, `count`, `mean`, `std`, `min`, `max`, `percentile` functions is <strong>forbidden</strong>. 
 
 > Usage
+
 ```python3
 describe.py [dataset_path]
 ```
 
 > Example
 
-![describe_example](https://user-images.githubusercontent.com/52034808/154796329-44f9740b-b838-437e-8bcd-78cfe8e0551b.png)
+
+![describe_example](/images/describe_example.png)
 
 ## Data Visualization
 
