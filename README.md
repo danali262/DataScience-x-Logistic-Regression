@@ -31,4 +31,5 @@ describe.py [dataset_path]
 
 ## Data Visualization
 
+In the <strong>Data Visualization</strong> part the aim is to create a <strong>histogram</strong>, a <strong>scatter plot</strong>, and a <strong>pair plot</strong> of our training dataset.
 
