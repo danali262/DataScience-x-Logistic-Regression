@@ -16,6 +16,8 @@ Run `make install`
 
 In the <strong>Data Analysis</strong> part the aim is to produce a `describe.py` program, which mimics the behaviour of `pandas.DataFrame.describe` method.
 
+The use of `describe`, `count`, `mean`, `std`, `min`, `max`, `percentile` functions is <strong>forbidden</strong>. 
+
 > Usage
 ```python3
 describe.py [dataset_path]
