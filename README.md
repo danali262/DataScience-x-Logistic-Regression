@@ -25,4 +25,8 @@ describe.py [dataset_path]
 
 > Example
 
-// add print screen of result
+![describe_example image](https://github.com/danali262/DataScience-x-Logistic-Regression/images/describe_example.png)
+
+## Data Visualization
+
+
