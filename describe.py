@@ -1,9 +1,9 @@
 import sys
 import pandas as pd
 
-import input
-import clean_data as cd
-import output
+from srcs import input
+from srcs import clean_data as cd
+from srcs import output
 
 
 if __name__ == "__main__":
@@ -19,3 +19,5 @@ if __name__ == "__main__":
 
     # create dataframe
     df_output = output.create_output(df_input)
+    pd.set_option("display.max_rows", None, "display.max_columns", None)
+    print(df_output)

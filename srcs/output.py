@@ -1,5 +1,5 @@
 import pandas as pd
-import methods
+from srcs import methods
 
 
 # Creates an empty dataframe with column names & row indices but no data
@@ -14,21 +14,20 @@ def create_dataframe(df_input):
 
 
 def fill_values(df_output, df_input):
-    count_list, min_list, max_list, mean_list = methods.create_lists(df_input)
+    count_list, min_list, max_list, mean_list, \
+        first_quartile_list, second_quartile_list, third_quartile_list = methods.create_lists(df_input)
 
     df_output.loc["Count"] = count_list
     df_output.loc["Min"] = min_list
     df_output.loc["Max"] = max_list
     df_output.loc["Mean"] = mean_list
 
-    # Calculate std deviation
-    # df_output.loc["Std"] = methods.fill_std(df_input, mean_list)
+    df_output.loc["25%"] = first_quartile_list
+    df_output.loc["50%"] = second_quartile_list
+    df_output.loc["75%"] = third_quartile_list
 
-    # Calculate percentiles
-    # first_quartile_list, second_quartile_list, third_quartile_list = methods.fill_quartile(df_input, count_list)
-    # df_output.loc["25%"] = first_quartile_list
-    # df_output.loc["50%"] = second_quartile_list
-    # df_output.loc["75%"] = third_quartile_list
+    # Calculate std deviation
+    df_output.loc["Std"] = methods.fill_std(df_input, mean_list, count_list)
 
     return df_output
 
@@ -36,4 +35,4 @@ def fill_values(df_output, df_input):
 def create_output(df_input):
     df_output = create_dataframe(df_input)
     df_output = fill_values(df_output, df_input)
-    print(df_output)
+    return df_output

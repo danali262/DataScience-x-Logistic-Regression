@@ -13,6 +13,7 @@ def pandas_profiling(df):
 
 
 def clean_data(df):
+    # uncomment to run
     # pandas_profiling(df)
 
     # we need to remove all non-numerical columns
@@ -21,5 +22,8 @@ def clean_data(df):
     if df_clean.empty:
         print("Input dataset contains only non-numerical values.")
         sys.exit(-1)
+
+    # running pandas_profiling again on the clean set for sanity check - uncomment to run
+    # pandas_profiling(df_clean)
 
     return df_clean
