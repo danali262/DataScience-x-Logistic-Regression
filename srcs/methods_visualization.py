@@ -28,15 +28,15 @@ def create_df(input_df, val):
     return output_df, new_subject
 
 
-def plot_histograms(df, subject):
+def scores_per_house(df, subject):
     Gryffindor_scores = []
     Slytherin_scores = []
     Ravenclaw_scores = []
     Hufflepuff_scores = []
 
     for ind in df.index:
-        if not df['Hogwarts House'][ind] or math.isnan(df[subject][ind]):
-            continue
+        # if not df['Hogwarts House'][ind] or math.isnan(df[subject][ind]):
+        #     continue
         if df['Hogwarts House'][ind] == 'Gryffindor':
             Gryffindor_scores.append(df[subject][ind])
         elif df['Hogwarts House'][ind] == 'Slytherin':
@@ -45,6 +45,12 @@ def plot_histograms(df, subject):
             Ravenclaw_scores.append(df[subject][ind])
         else:
             Hufflepuff_scores.append(df[subject][ind])
+
+    return Gryffindor_scores, Slytherin_scores, Ravenclaw_scores, Hufflepuff_scores
+
+
+def plot_histograms(df, subject):
+    Gryffindor_scores, Slytherin_scores, Ravenclaw_scores, Hufflepuff_scores = scores_per_house(df, subject)
 
     plt.hist(Gryffindor_scores, color='red', alpha=0.5)
     plt.hist(Slytherin_scores, color='green', alpha=0.5)
@@ -56,4 +62,20 @@ def plot_histograms(df, subject):
     plt.title(subject)
     plt.xlabel('Marks')
     plt.ylabel('Number of students')
+    plt.show()
+
+
+def plot_scatter(df_subject1, subject1, df_subject2, subject2):
+    Gryffindor_scores1, Slytherin_scores1, Ravenclaw_scores1, Hufflepuff_scores1 = scores_per_house(df_subject1, subject1)
+    Gryffindor_scores2, Slytherin_scores2, Ravenclaw_scores2, Hufflepuff_scores2 = scores_per_house(df_subject2, subject2)
+
+    plt.scatter(Gryffindor_scores1, Gryffindor_scores2, color='red', alpha=0.5)
+    plt.scatter(Slytherin_scores1, Slytherin_scores2, color='green', alpha=0.5)
+    plt.scatter(Ravenclaw_scores1, Ravenclaw_scores2, color='blue', alpha=0.5)
+    plt.scatter(Hufflepuff_scores1, Hufflepuff_scores2, color='yellow', alpha=0.5)
+
+    legend = ['Gryffindor', 'Slytherin', 'Ravenclaw', 'Hufflepuff']
+    plt.legend(legend, loc="upper right", frameon=False)
+    plt.xlabel(subject1)
+    plt.ylabel(subject2)
     plt.show()

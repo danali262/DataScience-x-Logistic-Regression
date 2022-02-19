@@ -2,15 +2,14 @@ import pandas as pd
 
 
 from srcs import user_input
-from srcs import histogram_df as hdf
+from srcs import methods_visualization as vis
 
 
 if __name__ == "__main__":
     df = pd.read_csv("./datasets/dataset_train.csv")
-    print(type(df))
 
     # receive input from user for which subject to create histogram
-    val = user_input.user_input()
+    val = user_input.user_input_histogram()
 
-    df_subject, subject = hdf.create_df(df, val)
-    hdf.plot_histograms(df_subject, subject)
+    df_subject, subject = vis.create_df(df, val)
+    vis.plot_histograms(df_subject, subject)

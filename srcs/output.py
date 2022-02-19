@@ -1,5 +1,5 @@
 import pandas as pd
-from srcs import methods
+from srcs import methods_describe
 
 
 # Creates an empty dataframe with column names & row indices but no data
@@ -15,7 +15,7 @@ def create_dataframe(df_input):
 
 def fill_values(df_output, df_input):
     count_list, min_list, max_list, mean_list, \
-        first_quartile_list, second_quartile_list, third_quartile_list = methods.create_lists(df_input)
+        first_quartile_list, second_quartile_list, third_quartile_list = methods_describe.create_lists(df_input)
 
     df_output.loc["Count"] = count_list
     df_output.loc["Min"] = min_list
@@ -27,7 +27,7 @@ def fill_values(df_output, df_input):
     df_output.loc["75%"] = third_quartile_list
 
     # Calculate std deviation
-    df_output.loc["Std"] = methods.fill_std(df_input, mean_list, count_list)
+    df_output.loc["Std"] = methods_describe.fill_std(df_input, mean_list, count_list)
 
     return df_output
 
