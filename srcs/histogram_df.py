@@ -1,4 +1,6 @@
 from enum import Enum
+import math
+import matplotlib.pyplot as plt
 
 
 class Subject(Enum):
@@ -20,10 +22,38 @@ class Subject(Enum):
 def create_df(input_df, val):
     subject = Subject(val).name
     new_subject = subject.replace('_', ' ')
-    # print(new_subject)
 
-    # output_df = input_df.drop(input_df.columns.difference(['Hogwarts House', new_subject]), 1, inplace=True)
-    output_df = input_df[["Hogwarts House", new_subject]]
-    print(output_df)
+    output_df = input_df[["Hogwarts House", new_subject]].copy()
 
-    
+    return output_df, new_subject
+
+
+def plot_histograms(df, subject):
+    Gryffindor_scores = []
+    Slytherin_scores = []
+    Ravenclaw_scores = []
+    Hufflepuff_scores = []
+
+    for ind in df.index:
+        if not df['Hogwarts House'][ind] or math.isnan(df[subject][ind]):
+            continue
+        if df['Hogwarts House'][ind] == 'Gryffindor':
+            Gryffindor_scores.append(df[subject][ind])
+        elif df['Hogwarts House'][ind] == 'Slytherin':
+            Slytherin_scores.append(df[subject][ind])
+        elif df['Hogwarts House'][ind] == 'Ravenclaw':
+            Ravenclaw_scores.append(df[subject][ind])
+        else:
+            Hufflepuff_scores.append(df[subject][ind])
+
+    plt.hist(Gryffindor_scores, color='red', alpha=0.5)
+    plt.hist(Slytherin_scores, color='green', alpha=0.5)
+    plt.hist(Ravenclaw_scores, color='blue', alpha=0.5)
+    plt.hist(Hufflepuff_scores, color='yellow', alpha=0.5)
+
+    legend = ['Gryffindor', 'Slytherin', 'Ravenclaw', 'Hufflepuff']
+    plt.legend(legend, loc="upper right", frameon=False)
+    plt.title(subject)
+    plt.xlabel('Marks')
+    plt.ylabel('Number of students')
+    plt.show()
