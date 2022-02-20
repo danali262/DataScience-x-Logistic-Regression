@@ -73,7 +73,7 @@ pair_plot.py
 
 > Example
 
-// add screenshot
+![pair_plot](https://user-images.githubusercontent.com/52034808/154854771-9d6d38c6-52b4-42e9-bf09-841ba66856eb.png)
 
 ## Logistic regression
 
