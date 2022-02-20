@@ -1,6 +1,6 @@
 # Data Science x Logistic Regression
 
-The aim of that project is to create a classifier that reproduces the behaviour of Hogwards' Sorting Hat.
+The aim of that project is to create a classifier that reproduces the behaviour of Hogwards' Sorting Hat. For more detailed information refer to `subject.pdf`
 
 There are three parts of the project:
 
