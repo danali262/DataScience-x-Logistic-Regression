@@ -26,7 +26,6 @@ describe.py [dataset_path]
 
 > Example
 
-
 ![describe_example](/images/describe_example.png)
 
 ## Data Visualization
@@ -45,7 +44,7 @@ histogram.py
 
 > Example
 
-// add screenshot
+![histogram](https://user-images.githubusercontent.com/52034808/154855354-3552bf25-ea15-4f22-b4fb-0ecfc888f5e6.png)
 
 ### Scatter Plot
 
@@ -59,7 +58,8 @@ scatter_plot.py
 
 > Example
 
-// add screenshot
+![scatter_plot](https://user-images.githubusercontent.com/52034808/154855359-45090628-5a08-49de-b2e0-770783450598.png)
+
 
 ### Pair plot
 
