@@ -1,5 +1,4 @@
 from enum import Enum
-import math
 import matplotlib.pyplot as plt
 
 
@@ -35,8 +34,6 @@ def scores_per_house(df, subject):
     Hufflepuff_scores = []
 
     for ind in df.index:
-        # if not df['Hogwarts House'][ind] or math.isnan(df[subject][ind]):
-        #     continue
         if df['Hogwarts House'][ind] == 'Gryffindor':
             Gryffindor_scores.append(df[subject][ind])
         elif df['Hogwarts House'][ind] == 'Slytherin':
@@ -56,6 +53,7 @@ def plot_histograms(df, subject):
     plt.hist(Slytherin_scores, color='green', alpha=0.5)
     plt.hist(Ravenclaw_scores, color='blue', alpha=0.5)
     plt.hist(Hufflepuff_scores, color='yellow', alpha=0.5)
+
 
     legend = ['Gryffindor', 'Slytherin', 'Ravenclaw', 'Hufflepuff']
     plt.legend(legend, loc="upper right", frameon=False)
