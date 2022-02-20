@@ -77,7 +77,7 @@ pair_plot.py
 
 ## Logistic regression
 
-The program `logistic_regression.py` uses the `dataset_train.csv` as training dataset, runs a Logistic Regression on it, and creates a prediction on the Hogwarts Houses for the `dataset_train.csv`. The result is stored in a new csv file in `./datasets/regression_output.csv`.
+The program `logistic_regression.py` uses the `dataset_train.csv` as training dataset, runs a Logistic Regression on it, and creates a prediction on the Hogwarts Houses for the `dataset_test.csv`. The result is stored in a new csv file in `./datasets/regression_output.csv`.
 
 > Usage
 
