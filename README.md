@@ -87,4 +87,5 @@ logistic_regression.py
 
 > Example
 
-// add screenshot
+![regression_output](https://user-images.githubusercontent.com/52034808/154854553-06ba4d15-cf18-45aa-a302-82dcc52acecc.png)
+
