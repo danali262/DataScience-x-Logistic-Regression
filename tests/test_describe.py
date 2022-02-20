@@ -1,22 +1,13 @@
-import unittest
+import os
 
 
-# uncomment in case the import describe doesn't work
-# import sys, os.path
-
-# bin_path = os.path.dirname(os.path.realpath(__file__))
-# lib_path = os.path.abspath(os.path.join(bin_path, '..', 'srcs'))
-# sys.path.insert(0, lib_path)
-
-class TestDescribeScript(unittest.TestCase):
-
-    # def SetUp(self):
-
-    def test_input(self):
-        with self.assertRaises(SystemExit):
-
-    # def tearDown(self) -> None:
-
-
-if __name__ = "__main__":
-    unittest.main()
+if __name__ == '__main__':
+    ret_value = os.system("python3 ../describe.py test.html")
+    if ret_value == -1:
+        print("Test 1: OK")
+    ret_value = os.system("python3 ../describe.py dataset_empty.csv")
+    if ret_value == -1:
+        print("Test 2: OK")
+    ret_value = os.system("python3 ../describe.py")
+    if ret_value == -1:
+        print("Test 3: OK")

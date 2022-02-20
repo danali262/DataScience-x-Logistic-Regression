@@ -12,6 +12,9 @@ if __name__ == "__main__":
 
     # converting the input to a pandas dataframe object
     df = pd.read_csv(sys.argv[1])
+    if df.empty:
+        print("CSV file is empty")
+        sys.exit(-1)
 
     # data cleaning
     df_input = cd.clean_data(df)
